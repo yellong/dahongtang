@@ -16,8 +16,7 @@
         table{
             position: relative;
             padding: 0;
-            margin: 0 auto;
-            margin-top: 250px;
+            margin: 250px auto 120px;
             left: 20px;
         }
 
@@ -42,6 +41,10 @@
             font-size: 18px;
             margin: 10px;
         }
+        .fwresult{
+            font-size: 12px;
+            text-shadow: 2px 2px 4px #fff;
+        }
     </style>
 </head>
 <body>
@@ -59,7 +62,73 @@
     <tr>
         <td id='weixin'>扫描二维码进入<a href="http://dahongtang.taobao.com">大泓堂官方淘宝店铺</a></td>
     </tr>
-
+    <tr>
+        <td>
+            <input type="input" class="fwcode" placeholder="请输入防伪码"/>
+            <button class="query">查询</button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="fwresult"></div>
+        </td>
+    </tr>
 </table>
+<script type="text/javascript" src="javascripts/jquery-1.8.2.min.js"></script>
+<script type="text/javascript">
+            $(function() {
+                var $fwcode = $(".fwcode");
+                var $fwresult = $(".fwresult");
+                var RegNumber = /^[0-9]*[1-9][0-9]*$/;
+                var flag = false;
+                $(".query").click(function() {
+                    var code =  $.trim($fwcode.val());
+                    $fwresult.html("");
+                    if (code.length === 0) {
+                        $fwresult.html("防伪码不能为空");
+                        $fwcode.focus();
+                        return false;
+                    }
+                    else if (code.length < 10) {
+                        $fwresult.html("防伪码长度不能少于10位");
+                        $fwcode.focus();
+                        return false;
+                    }
+                    else if (code.length > 24) {
+                        $fwresult.html("防伪码长度不能大于24位");
+                        $fwcode.focus();
+                        return false;
+                    }
+                    else if (!RegNumber.test(code)) {
+                        $fwresult.html("您输入的防伪码不是数字");
+                        $fwcode.focus();
+                        return false;
+                    }
+                    $fwresult.html("正在查询......");
+                    $(this).attr("disabled", true);  //禁止按钮
+                    $.ajaxSetup({ scriptCharset: "gbk" , contentType: "application/json; charset=gbk"});
+                    $.getJSON(
+                            "http://www.3653315.com/fwipjson.asp?callback=?","",
+                            function(data2) {
+                                // alert(data2.fwip);     //fwip   返回ip地址如：http://14.150.36.134:6080
+                                $.getJSON(
+                                        data2.fwip + "/fwqueryjson.asp?callback=?",
+                                        { FwCode: code },
+                                        function(data) {
+                                            //   alert(data.CodeState);    //CodeState 为查询状况：1 正确; 2 过期 ; 3 重复 ;   4 作废; 5 错误 ;6 过期
+                                            //   alert(data.QueryResult) ;   //QueryResult 查询结果
+                                            //此处可以根据返回的结果  data.CodeState 修改显示内容
+                                            $fwresult.html(data.QueryResult);     //显示数据
+                                            setTimeout(btnEnabled, 2000);          //2000ms后开启按钮
+                                        });
+                            }
+                    );
+                });
+                function btnEnabled() {
+                    $(".query").attr("disabled", false);
+                }
+            });
+
+</script>
 </body>
 </html>

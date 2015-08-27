@@ -10,37 +10,100 @@
         body{
             margin: 0;
             padding: 0;
-            background: url('img/bg2.jpg') no-repeat fixed center top transparent;
+            background: url() no-repeat fixed center top transparent;
             text-align: center;
         }
-        table{
-            position: relative;
-            padding: 0;
-            margin: 300px auto 120px;
-            left: 20px;
+        
+        
+
+        #logo1{
+            float: left;
+            width: 22%;
+        }
+
+        #logo2{
+            float: right;
+            width: 22%;
+        }
+        #container{
+            padding-top: 165px;
+        }
+        #qrcode{
+            width: 73%;
+
+        }
+        #weixin{
+            text-shadow: 0px 1px 0px #fff;
+            display: inline-block;
         }
 
         #logo{
+            display: inline-block;
+        }
 
-        }
-        #qrcode{
-            width: 240px;
-            height: 240px;
-        }
-        #weixin{
-            height: 40px;
-            font-size: 20px;
-            text-shadow: 0px 1px 0px #fff;
+        .logo{
+            width: 75%;
         }
         #taobao{
-            height: 30px;
-            font-size: 16px;
             text-shadow: 0px 1px 0px #fff;
+            display: inline-block;
         }
+
+        #storename{
+            padding-top: 20px;
+            font-family: ;
+            font-size: 18px;
+        }
+
         a{
             font-size: 18px;
             margin: 10px;
         }
+        #catalog{
+            position: relative;
+            padding: 115px 0px 0px;
+            width: 700px;
+            margin: 0 auto;
+        }
+
+        .varieties{
+            width: 16%;
+            display: inline-block;
+        }
+
+        .varieties img{
+            display: block;
+            width: 90%;
+        }
+
+        .yw img{
+           position: relative;
+           left: 20px; 
+        }
+        
+
+        .xys{
+            
+        }
+
+        .sh img{
+            position: relative;
+            left: 5px;
+        }
+
+        .dcxc{
+            
+        }
+
+        .variname1{
+            
+        }
+        .variname{
+            width: 100%;
+            margin-top: 10px;
+            text-align: center;
+        }
+       
         .fwresult{
             font-size: 14px;
             color: #222;
@@ -49,35 +112,53 @@
     </style>
 </head>
 <body>
-<table>
-    <tr>
-        <td>
-            <a href="http://www.dahongmaoyi.com">
-            <img id='logo' src="img/baojintang_logo.png" width="280px" style="margin: 30px 0;" alt=""/>
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td><img id='qrcode' src="img/xuncaisp.png" alt="" width="240" height="240"/></td>
-    </tr>
-    <tr>
-        <td id='weixin'>扫描二维码进入<a href="http://xuncaisp.tmall.com">宝津堂官方天猫店</a></td>
-    </tr>
-    <tr>
-        <td>或者进入<a href="http://dahongtang.taobao.com">宝津堂集市店</a></td>
-    </tr>
-    <tr>
-        <td>
-            <input type="input" class="fwcode" placeholder="请输入防伪码"/>
-            <button class="query">查询</button>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <div class="fwresult"></div>
-        </td>
-    </tr>
-</table>
+    <img id='logo1' src="img/org/page_01.png">
+    <img id='logo2' src="img/org/page_03.png">
+
+    <div id="container">
+        <div id="taobao">
+            <img id="qrcode" src="img/org/page_05.png">
+            <div id="storename">宝津堂天猫店</div>
+        </div>
+
+        <div id="logo">
+            <img class="logo" src="img/org/page_11.png">
+        </div>
+
+        <div id="weixin">
+            <img id="qrcode" src="img/org/page_07.png">
+            <div id="storename">宝津堂微商店</div>            
+        </div>
+
+        <div id="catalog">
+            <div class="varieties yw">
+                <img src="img/org/page_24.png">
+                <div class="variname">燕窝</div>
+            </div>
+             <div class="varieties xys">
+                <img src="img/org/page_25.png">
+                <div class="variname">西洋参</div>
+            </div>
+             <div class="varieties sh">
+                <img src="img/org/page_26.png">
+                <div class="variname">石斛</div>
+            </div>
+             <div class="varieties dcxc">
+                <img src="img/org/page_27.png">
+                <div class="variname">冬虫夏草</div>
+            </div>
+             <div class="varieties hgq">
+                <img src="img/org/page_28.png">
+                <div class="variname">黑枸杞</div>
+            </div>
+             <div class="varieties lr">
+                <img src="img/org/page_29.png">
+                <div class="variname">鹿茸</div>
+            </div>
+            
+        </div>
+    </div>
+
 <script type="text/javascript" src="javascripts/jquery-1.8.2.min.js"></script>
 <script type="text/javascript">
             $(function() {
